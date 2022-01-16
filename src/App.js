@@ -1,23 +1,61 @@
-import logo from './logo.svg';
+
+
+
+import {useState, useEffect} from "react";
+import axios from "axios" ;
 import './App.css';
 
+
 function App() {
+  // setting up const variables for the app
+  const baseUrl = "https://api.airvisual.com/v2/city";
+  const apiKey = "7d2a621e-555f-4192-9072-0289c034663c";
+  const [userCountryChoice, setUserCountryChoice] = useState("canada");
+  const [userProvinceCoice, setUserProvinceChoice] = useState("ontario");
+  const [userCityChoice, setUserCityChoice] = useState("toronto");
+  const [searchTerms, setSearchTerms] = useState([]);
+
+  // For API calls
+  useEffect( () => {
+    const testCallToApi = () => {
+      const url = new URL(baseUrl);
+      url.search = new URLSearchParams({
+        key: apiKey,
+        country: userCountryChoice,
+        state: userProvinceCoice,
+        city: userCityChoice,
+      });
+
+      fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((jsonResult) => {
+          console.log(jsonResult.data.current.pollution.aqius);
+          console.log(jsonResult.data.current.weather.hu);
+          console.log(jsonResult.data.current.weather.tp);
+          console.log(jsonResult.data.current.weather.ic);
+        });
+    };
+    testCallToApi();
+    // axios({
+    //   url: baseUrl,
+    //   method: "GET",
+    //   dataRespsonse: "json",
+    //   params: {
+    //     country: userCountryChoice,
+    //     state: userProvinceCoice,
+    //     city: userCityChoice,
+    //   }
+    // })
+    // .then( (response) => {
+    //   console.log(response);  
+    // });
+  }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
