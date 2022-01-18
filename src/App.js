@@ -11,8 +11,8 @@ function App() {
   const baseUrl = "https://api.airvisual.com/v2/city";
   const apiKey = "7d2a621e-555f-4192-9072-0289c034663c";
   const [userCountryChoice, setUserCountryChoice] = useState("canada");
-  const [userProvinceCoice, setUserProvinceChoice] = useState("ontario");
-  const [userCityChoice, setUserCityChoice] = useState("toronto");
+  const [userProvinceCoice, setUserProvinceChoice] = useState("");
+  const [userCityChoice, setUserCityChoice] = useState("");
   const [searchTerms, setSearchTerms] = useState([]);
 
   // For API calls
@@ -38,6 +38,7 @@ function App() {
         });
     };
     testCallToApi();
+
     // axios({
     //   url: baseUrl,
     //   method: "GET",
@@ -51,11 +52,37 @@ function App() {
     // .then( (response) => {
     //   console.log(response);  
     // });
-  }, []);
+
+  }, [searchTerms]);
+
+  const handleProvinceInputChange = (event) => {
+    setUserProvinceChoice(event.target.value);
+  };
+
+  const handleCityInputChange = (event) => {
+    setUserCityChoice(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setSearchTerms([userProvinceCoice, userCityChoice]);
+  }
+  
   
   return (
     <div className="App">
-      
+
+      <form action="sumit" onSubmit={handleSubmit}>
+        <label htmlFor="province">choose province to get data for</label>
+        <input type="text" id="province" onChange={handleProvinceInputChange} value={userProvinceCoice}/>
+        
+
+        <label htmlFor="city">choose city to get data for</label>
+        <input type="text" id="city" onChange={handleCityInputChange} value={userCityChoice} />
+        <button>submit</button>
+      </form>
+
     </div>
   );
 }
