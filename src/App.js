@@ -1,7 +1,7 @@
 
 
 
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import axios from "axios" ;
 import './App.css';
 
@@ -13,31 +13,38 @@ function App() {
   const [userCountryChoice, setUserCountryChoice] = useState("canada");
   const [userProvinceCoice, setUserProvinceChoice] = useState("");
   const [userCityChoice, setUserCityChoice] = useState("");
-  const [searchTerms, setSearchTerms] = useState([]);
+  const [searchTermArray, setSearchTermArray] = useState([]);
 
   // For API calls
+    // useRef() used to create a ref that keep track of first render.
+    // This stops api call to go off at initial page road.
+  const didMount =useRef(false);
   useEffect( () => {
-    const testCallToApi = () => {
-      const url = new URL(baseUrl);
-      url.search = new URLSearchParams({
-        key: apiKey,
-        country: userCountryChoice,
-        state: userProvinceCoice,
-        city: userCityChoice,
-      });
-
-      fetch(url)
-        .then((response) => {
-          return response.json();
-        })
-        .then((jsonResult) => {
-          console.log(jsonResult.data.current.pollution.aqius);
-          console.log(jsonResult.data.current.weather.hu);
-          console.log(jsonResult.data.current.weather.tp);
-          console.log(jsonResult.data.current.weather.ic);
+    if (didMount.current) {
+      const testCallToApi = () => {
+        const url = new URL(baseUrl);
+        url.search = new URLSearchParams({
+          key: apiKey,
+          country: userCountryChoice,
+          state: searchTermArray[0],
+          city: searchTermArray[1],
         });
-    };
-    testCallToApi();
+
+        fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .then((jsonResult) => {
+            console.log(jsonResult.data.current.pollution.aqius);
+            console.log(jsonResult.data.current.weather.hu);
+            console.log(jsonResult.data.current.weather.tp);
+            console.log(jsonResult.data.current.weather.ic);
+          });
+      };
+      testCallToApi();
+    } else {
+      didMount.current = true;
+    }
 
     // axios({
     //   url: baseUrl,
@@ -53,7 +60,7 @@ function App() {
     //   console.log(response);  
     // });
 
-  }, [searchTerms]);
+  }, [searchTermArray]);
 
   const handleProvinceInputChange = (event) => {
     setUserProvinceChoice(event.target.value);
@@ -66,7 +73,9 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setSearchTerms([userProvinceCoice, userCityChoice]);
+    setSearchTermArray([userProvinceCoice, userCityChoice]);
+    setUserProvinceChoice("");
+    setUserCityChoice("");
   }
   
   
