@@ -35,10 +35,16 @@ function App() {
             return response.json();
           })
           .then((jsonResult) => {
-            console.log(jsonResult.data.current.pollution.aqius);
-            console.log(jsonResult.data.current.weather.hu);
-            console.log(jsonResult.data.current.weather.tp);
-            console.log(jsonResult.data.current.weather.ic);
+            // error handling for missspelled province/city names on submit
+            if (jsonResult.status == "success"){
+              console.log(jsonResult.status);
+              console.log(jsonResult.data.current.pollution.aqius);
+              console.log(jsonResult.data.current.weather.hu);
+              console.log(jsonResult.data.current.weather.tp);
+              console.log(jsonResult.data.current.weather.ic);
+            } else{
+              console.log("do dolphins get bored? also you messed up your spelling");
+            }
           });
       };
       testCallToApi();
@@ -72,10 +78,15 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    setSearchTermArray([userProvinceCoice, userCityChoice]);
-    setUserProvinceChoice("");
-    setUserCityChoice("");
+    // error handling for empty input box on submit
+    if(userProvinceCoice !== "" && userCityChoice !== ""){
+      setSearchTermArray([userProvinceCoice, userCityChoice]);
+      setUserProvinceChoice("");
+      setUserCityChoice("");
+      
+    } else {
+      console.log("do monkeys really throw shit? also make sure you put stuff in the search box first");
+    };
   }
   
   
