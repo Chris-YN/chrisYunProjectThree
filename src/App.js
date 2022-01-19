@@ -2,17 +2,22 @@
 
 
 import {useState, useEffect, useRef} from "react";
-import axios from "axios" ;
+// axios not used in this version. it will be used at a later version.
+// import axios from "axios" ;
 import './App.css';
+import SearchForms from "./SearchForms/SearchForms";
+import DisplayResults from "./DisplayResults/DisplayResults";
 
 
 function App() {
   // setting up const variables for the app
   const baseUrl = "https://api.airvisual.com/v2/city";
   const apiKey = "7d2a621e-555f-4192-9072-0289c034663c";
+
+  // useState()
+  // contry search is fixed to Canada in this version. option will be
+      // added in a later version
   const [userCountryChoice, setUserCountryChoice] = useState("canada");
-  const [userProvinceCoice, setUserProvinceChoice] = useState("");
-  const [userCityChoice, setUserCityChoice] = useState("");
   const [searchTermArray, setSearchTermArray] = useState([]);
 
   // For API calls
@@ -52,37 +57,13 @@ function App() {
       didMount.current = true;
     }
 
-    // axios({
-    //   url: baseUrl,
-    //   method: "GET",
-    //   dataRespsonse: "json",
-    //   params: {
-    //     country: userCountryChoice,
-    //     state: userProvinceCoice,
-    //     city: userCityChoice,
-    //   }
-    // })
-    // .then( (response) => {
-    //   console.log(response);  
-    // });
-
   }, [searchTermArray]);
 
-  const handleProvinceInputChange = (event) => {
-    setUserProvinceChoice(event.target.value);
-  };
-
-  const handleCityInputChange = (event) => {
-    setUserCityChoice(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, userProvinceChoice, userCityChoice) => {
     event.preventDefault();
     // error handling for empty input box on submit
-    if(userProvinceCoice !== "" && userCityChoice !== ""){
-      setSearchTermArray([userProvinceCoice, userCityChoice]);
-      setUserProvinceChoice("");
-      setUserCityChoice("");
+    if (userProvinceChoice !== "" && userCityChoice !== ""){
+      setSearchTermArray([userProvinceChoice, userCityChoice]);
       
     } else {
       console.log("do monkeys really throw shit? also make sure you put stuff in the search box first");
@@ -93,15 +74,7 @@ function App() {
   return (
     <div className="App">
 
-      <form action="sumit" onSubmit={handleSubmit}>
-        <label htmlFor="province">choose province to get data for</label>
-        <input type="text" id="province" onChange={handleProvinceInputChange} value={userProvinceCoice}/>
-        
-
-        <label htmlFor="city">choose city to get data for</label>
-        <input type="text" id="city" onChange={handleCityInputChange} value={userCityChoice} />
-        <button>submit</button>
-      </form>
+      <SearchForms handleSubmit={handleSubmit}/>
 
     </div>
   );
