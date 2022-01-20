@@ -19,6 +19,8 @@ function App() {
       // added in a later version
   const [userCountryChoice, setUserCountryChoice] = useState("canada");
   const [searchTermArray, setSearchTermArray] = useState([]);
+  const [responseObject, setResponseObject] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   // For API calls
     // useRef() used to create a ref that keep track of first render.
@@ -42,13 +44,17 @@ function App() {
           .then((jsonResult) => {
             // error handling for missspelled province/city names on submit
             if (jsonResult.status == "success"){
-              console.log(jsonResult.status);
-              console.log(jsonResult.data.current.pollution.aqius);
-              console.log(jsonResult.data.current.weather.hu);
-              console.log(jsonResult.data.current.weather.tp);
-              console.log(jsonResult.data.current.weather.ic);
+              setResponseObject({
+                status: jsonResult.status,
+                aqi: jsonResult.data.current.pollution.aqius,
+                humidity: jsonResult.data.current.weather.hu,
+                temperature: jsonResult.data.current.weather.tp,
+                weatherIcon: jsonResult.data.current.weather.ic,
+              })
             } else{
-              console.log("do dolphins get bored? also you messed up your spelling");
+              console.log("do dolphins ever get bored? also you messed up your spelling");
+              setErrorMessage("do dolphins ever get bored? also you messed up your spelling")
+
             }
           });
       };
@@ -56,6 +62,7 @@ function App() {
     } else {
       didMount.current = true;
     }
+    console.log(responseObject)
 
   }, [searchTermArray]);
 
@@ -63,6 +70,7 @@ function App() {
     event.preventDefault();
     // error handling for empty input box on submit
     if (userProvinceChoice !== "" && userCityChoice !== ""){
+      setErrorMessage("");
       setSearchTermArray([userProvinceChoice, userCityChoice]);
       
     } else {
@@ -74,7 +82,10 @@ function App() {
   return (
     <div className="App">
 
-      <SearchForms handleSubmit={handleSubmit}/>
+      <SearchForms handleSubmit={ handleSubmit }/>
+      <DisplayResults responseObject={responseObject}/>
+      <p>{errorMessage}</p>
+
 
     </div>
   );

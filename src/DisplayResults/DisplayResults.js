@@ -2,9 +2,17 @@
 
 
 // DisplayResults.js
-const DisplayResults = () => {
+const DisplayResults = ({ responseObject }) => {
   return(
-    <p>results are returned in here</p>
+    <div className="SearchResult">
+      <h2>resuilts here</h2>
+      <ul>
+        <li>{ responseObject.aqi }</li>
+        <li>{responseObject.humidity }</li>
+        <li>{responseObject.temperature }</li>
+        <li>{responseObject.weatherIcon }</li>
+      </ul>
+    </div>
   );
 }
 
