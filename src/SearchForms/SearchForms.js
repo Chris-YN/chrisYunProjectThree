@@ -26,16 +26,24 @@ const SearchForms = (props) => {
       action="submit" 
       onSubmit={(event) => { props.handleSubmit(event, userProvinceChoice, userCityChoice)}}
     >
-      <label htmlFor="provinceSearch">Enter Province</label>
+      <label htmlFor="provinceSearch"
+        className="visuallyHidden"
+      >
+      </label>
       <input type="text" id="provinceSearch" 
         onChange={handleProvinceChange} 
         value={userProvinceChoice} 
+        placeholder="Enter Province"
       />
 
-      <label htmlFor="citySearch">Enter city</label>
+      <label htmlFor="citySearch" 
+        className="visuallyHidden"
+      >
+      </label>
       <input type="text" id="citySearch"
         onChange={handleCityChange}
         value={userCityChoice}
+        placeholder="Enter City"
       />
 
       <button>Search</button>
