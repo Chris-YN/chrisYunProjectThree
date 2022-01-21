@@ -66,7 +66,7 @@ function App() {
             } else{
               // set responseObject to undefined to clear any previous results 
               setResponseObject({});
-              setErrorMessage("Do dolphins ever get bored? Also, you might have a miss-typed something there")
+              setErrorMessage("Do dolphins ever get bored? Also, you might have miss-typed something there")
             }
           });
       };
@@ -87,7 +87,7 @@ function App() {
     if (userProvinceChoice == "" || userCityChoice == "") {
       // set responseObject to undefined to clear any previous results 
       setResponseObject({});
-      setErrorMessage("Do birds ever get scared of height? Also, you might need to enter both Province and City names correctly")
+      setErrorMessage("Do birds ever get afraid of height? Also, you might have forgot to enter both Province and City names correctly")
     }
     else{
       setErrorMessage("");
@@ -117,20 +117,20 @@ function App() {
 
 
       <main>
-        
-          <div className="displayResult">
-              <DisplayResults responseObject={responseObject} />
-          </div>
-        
+        <section className="displayResult">
+          
+          <DisplayResults responseObject={responseObject} />
+          
+          <p className="errorMessages">{errorMessage}</p>
+        </section>
       </main>
       
 
 
       <footer>
-
+            <p>Copyright © 2022 Juno College</p>
       </footer>
       
-      <p>{errorMessage}</p>
 
     </div>
     </div>

@@ -2,13 +2,48 @@
 
 
 // displayResult.scss
-.displayResult{
-  width: 85%;
-  margin: 10% auto 0 auto;
+.resultContainer{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 3% auto 0 auto;
+  padding-bottom: 12%;
   text-align: center;
 
-    & li{
-      color: darkblue;
+  & img{
+    position: absolute;
+    top: -8%;
+    z-index:-1;
+    opacity: 0.3;
+    width: 85%;
+  }
+  
+    & li,
+    p{
+      font-size: 1.4em;
+      color: $midDarkGrey;
+      margin-top: 2%;
     }
+}
+
+.resultList{
+  width: 50%;
+}
+
+.resultUl{
+  & li:nth-child(3),
+  & li:nth-child(4),
+  & li:nth-child(5){
+    margin-top: 9%;
+  }
+}
+
+.errorMessages{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 5%;
 }
 

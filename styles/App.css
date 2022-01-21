@@ -268,15 +268,62 @@ h2 {
 }
 
 p,
+li,
 input,
 button {
   font-family: "B612", sans-serif;
   font-size: 1em;
 }
 
+@media (max-width: 885px) {
+  .headerFlexParent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .headerFlexParent input {
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  h1::after {
+    display: none;
+  }
+}
+@media (max-width: 655px) {
+  header {
+    width: 90%;
+  }
+
+  .searchFormFlexParent {
+    align-content: center;
+  }
+
+  h1 {
+    font-size: 2.3em;
+  }
+}
+@media (max-width: 450px) {
+  h1 {
+    font-size: 2em;
+  }
+}
+@media (max-width: 390px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .resultContainer li,
+.resultContainer p {
+    font-size: 1em;
+  }
+}
 .preLoadWrapper,
 .wrapper {
-  max-width: 1280px;
+  max-width: 985px;
   width: 90vw;
   margin: 0 auto;
 }
@@ -286,17 +333,23 @@ button {
 }
 
 .wrapper {
-  background: linear-gradient(180deg, #42c6e7 8%, var(--aqiColor) 100%);
+  background: linear-gradient(180deg, #42c6e7 6%, var(--aqiColor) 100%);
 }
 
-.displayResult {
-  width: 85%;
-  margin: 0 auto;
+footer {
+  background-color: #1a1a1a;
+}
+footer p {
+  color: #FFFFFF;
+  font-size: 0.6em;
+  padding: 1% 0 1% 0;
+  text-align: center;
 }
 
 header {
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 6%;
 }
 header p {
   font-size: 1em;
@@ -357,11 +410,46 @@ header button {
   background-color: #707070;
 }
 
-.displayResult {
-  width: 85%;
-  margin: 10% auto 0 auto;
+header button:hover {
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.resultContainer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 3% auto 0 auto;
+  padding-bottom: 12%;
   text-align: center;
 }
-.displayResult li {
-  color: darkblue;
+.resultContainer img {
+  position: absolute;
+  top: -8%;
+  z-index: -1;
+  opacity: 0.3;
+  width: 85%;
+}
+.resultContainer li,
+.resultContainer p {
+  font-size: 1.4em;
+  color: #4b4d3c;
+  margin-top: 2%;
+}
+
+.resultList {
+  width: 50%;
+}
+
+.resultUl li:nth-child(3), .resultUl li:nth-child(4), .resultUl li:nth-child(5) {
+  margin-top: 9%;
+}
+
+.errorMessages {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 5%;
 }/*# sourceMappingURL=App.css.map */

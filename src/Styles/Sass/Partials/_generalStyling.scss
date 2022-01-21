@@ -2,9 +2,13 @@
 
 
 // _generalStyling.scss
+
+// .App{
+//   background-color: $startGrey;
+// }
 .preLoadWrapper,
 .wrapper{
-  max-width: 1280px;
+  max-width: 985px;
   width: 90vw;
   margin: 0 auto;
 }
@@ -14,10 +18,15 @@
 }
 
 .wrapper{
-  background: linear-gradient(180deg, rgb(66, 198, 231) 8%,  var(--aqiColor) 100%);
+  background: linear-gradient(180deg, rgb(66, 198, 231) 6%,  var(--aqiColor) 100%);
 }
 
-.displayResult{
-  width: 85%;
-  margin: 0 auto;
+footer{
+  background-color: $darkGrey;
+  & p{
+    color: $white;
+    font-size: 0.6em;
+    padding: 1% 0 1% 0;
+    text-align: center;
+  }
 }
