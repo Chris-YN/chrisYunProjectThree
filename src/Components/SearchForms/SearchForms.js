@@ -4,14 +4,16 @@
 // SearchForms.js
 import { useState } from "react";
 
+
+
 const SearchForms = (props) => {
   const [userProvinceChoice, setUserProvinceChoice] = useState([]);
   const [userCityChoice, setUserCityChoice] = useState([]);
 
 
+
   const handleProvinceChange = (event) => {
     setUserProvinceChoice(event.target.value);
-
 
   };
   const handleCityChange = (event) => {

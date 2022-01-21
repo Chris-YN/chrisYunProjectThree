@@ -4,11 +4,12 @@
 // App.js
 //=====  imports  =====//
 import {useState, useEffect, useRef} from "react";
+// import { Link, Routes, Route, Outlet } from "react-router-dom";
 // axios not used in this version. it will be used at a later version.
 // import axios from "axios" ;
 import './Styles/Sass/App.scss';
-import SearchForms from "./SearchForms/SearchForms";
-import DisplayResults from "./DisplayResults/DisplayResults";
+import SearchForms from "./Components/SearchForms/SearchForms.js";
+import DisplayResults from "./Components/DisplayResults/DisplayResults.js";
 
 
 
@@ -53,7 +54,7 @@ function App() {
           .then((jsonResult) => {
             console.log(jsonResult);
             // if statement to handle error(user side) for 404 from
-              // missspelled or missing province/city names on submit.
+              // missspelled province / city name.
             if (jsonResult.status == "success"){
               setResponseObject({
                 status: jsonResult.status,
@@ -63,7 +64,9 @@ function App() {
                 weatherIcon: jsonResult.data.current.weather.ic,
               })
             } else{
-              setErrorMessage("Do dolphins ever get bored? Also, you might have a typo there")
+              // set responseObject to undefined to clear any previous results 
+              setResponseObject({});
+              setErrorMessage("Do dolphins ever get bored? Also, you might have a miss-typed something there")
             }
           });
       };
@@ -77,12 +80,14 @@ function App() {
 
 
 
-  //===  handleSubmit to pass to SearchForm as prop  ===//
+  //=====  handleSubmit to pass to SearchForm as prop  =====//
   const handleSubmit = (event, userProvinceChoice, userCityChoice) => {
     event.preventDefault();
     // error handling for empty input box on submit
     if (userProvinceChoice == "" || userCityChoice == "") {
-      setErrorMessage("Do birds ever get scared of height? Also, you might need to enter both Province and City")
+      // set responseObject to undefined to clear any previous results 
+      setResponseObject({});
+      setErrorMessage("Do birds ever get scared of height? Also, you might need to enter both Province and City names correctly")
     }
     else{
       setErrorMessage("");
@@ -92,7 +97,7 @@ function App() {
   
 
 
-  // @@@  JSX  @@@ //
+  //=====  JSX  =====//
   return (
     <div className="App">
     <div className="wrapper">
@@ -101,11 +106,12 @@ function App() {
         <h1>Weather and Air Quality</h1>
         <p>Please enter Province and City name</p>
       </header>
-
       <SearchForms handleSubmit={ handleSubmit }/>
-      <DisplayResults responseObject={responseObject}/>
+      <DisplayResults responseObject={responseObject} />
+      
+      
       <p>{errorMessage}</p>
-
+      
     </div>
     {/* wrapper ends */}
     </div>
