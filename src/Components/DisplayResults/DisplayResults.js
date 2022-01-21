@@ -46,7 +46,7 @@ const DisplayResults = ({ responseObject }) => {
     aqiExplanationString = ",  Maroon - Air quality is Hazardous";
     colorChange("#a87383");
   }
-  // console.log(WeatherConditionString);
+ 
 
 
   //=====  JSX  =====//

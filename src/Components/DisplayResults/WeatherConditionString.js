@@ -2,11 +2,6 @@
 
 
 // WeatherConditionString.js
-// import { useState } from "react";
-
-
-// const [ weatherString, setWeatherString ] = useState("");
-
 const WeatherConditionString = (props) => {
   let weatherString = ""
 
