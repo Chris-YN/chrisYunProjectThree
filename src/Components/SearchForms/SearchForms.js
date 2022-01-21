@@ -35,7 +35,7 @@ const SearchForms = (props) => {
       <input type="text" id="provinceSearch" 
         onChange={handleProvinceChange} 
         value={userProvinceChoice} 
-        placeholder="Enter Province"
+        placeholder="Province"
       />
 
       <label htmlFor="citySearch" 
@@ -45,7 +45,7 @@ const SearchForms = (props) => {
       <input type="text" id="citySearch"
         onChange={handleCityChange}
         value={userCityChoice}
-        placeholder="Enter City"
+        placeholder="City"
       />
 
       <button>Search</button>

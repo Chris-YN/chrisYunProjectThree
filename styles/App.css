@@ -216,7 +216,7 @@ html {
   box-sizing: inherit;
 }
 
-.sr-only {
+.visuallyHidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -245,6 +245,8 @@ ul {
   padding: 0;
 }
 
+h1,
+h2,
 p {
   margin: 0;
 }
@@ -265,28 +267,40 @@ h2 {
   font-size: 2em;
 }
 
-p {
+p,
+input,
+button {
   font-family: "B612", sans-serif;
   font-size: 1em;
 }
 
-html {
-  background-color: #FFFFFF;
-}
-
+.preLoadWrapper,
 .wrapper {
   max-width: 1280px;
-  background: linear-gradient(180deg, #75dbec 0%, var(--aqiColor) 100%);
   width: 90vw;
   margin: 0 auto;
 }
 
-#test {
-  background-image: url(../../Assets/02d.png);
+.preLoadWrapper {
+  background-color: #889b9c;
+}
+
+.wrapper {
+  background: linear-gradient(180deg, #42c6e7 8%, var(--aqiColor) 100%);
+}
+
+.displayResult {
+  width: 85%;
+  margin: 0 auto;
 }
 
 header {
   width: 90%;
+  margin: 0 auto;
+}
+header p {
+  font-size: 1em;
+  color: white;
 }
 
 .headerFlexParent,
@@ -295,5 +309,59 @@ header {
 }
 
 .headerFlexParent {
+  padding: 10% 10% 0 10%;
+}
+
+h1 {
   width: 50%;
+  margin-right: 3%;
+  position: relative;
+  z-index: 1;
+}
+h1::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  right: -10.5%;
+  top: -8%;
+  border-left: solid 5px #FFFFFF;
+  z-index: -1;
+}
+
+.searchFormFlexParent {
+  margin: 8% 0 1% 4%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#provinceSearch {
+  margin-top: 4%;
+}
+
+#citySearch {
+  margin: 1.5% 0 4% 0;
+}
+
+header input {
+  border: 0;
+  border-radius: 4px;
+  color: #707070;
+  width: 65%;
+  display: block;
+}
+
+header button {
+  border: 0;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background-color: #707070;
+}
+
+.displayResult {
+  width: 85%;
+  margin: 10% auto 0 auto;
+  text-align: center;
+}
+.displayResult li {
+  color: darkblue;
 }/*# sourceMappingURL=App.css.map */

@@ -100,13 +100,15 @@ function App() {
   //=====  JSX  =====//
   return (
     <div className="App">
+    <div className="preLoadWrapper">
     <div className="wrapper">
+
 
       <header>
         <div className="headerFlexParent">
             <h1>Weather & Air Quality</h1>
           <div className="searchFormFlexParent">
-            <p>Please enter Province and City name</p>
+            <p>Please enter: </p>
             <SearchForms handleSubmit={ handleSubmit }/>
           </div>
         </div>
@@ -129,7 +131,8 @@ function App() {
       </footer>
       
       <p>{errorMessage}</p>
-      
+
+    </div>
     </div>
     {/* wrapper ends */}
     </div>

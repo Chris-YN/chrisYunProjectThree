@@ -2,17 +2,22 @@
 
 
 // _generalStyling.scss
-html{
-  background-color: $white;
-}
-
+.preLoadWrapper,
 .wrapper{
   max-width: 1280px;
-  background: linear-gradient(180deg, rgb(117, 219, 236) 0%,  var(--aqiColor) 100%);
   width: 90vw;
   margin: 0 auto;
 }
 
-#test{
-  background-image: url(../../Assets/02d.png);
+.preLoadWrapper{
+  background-color: $startGrey;
+}
+
+.wrapper{
+  background: linear-gradient(180deg, rgb(66, 198, 231) 8%,  var(--aqiColor) 100%);
+}
+
+.displayResult{
+  width: 85%;
+  margin: 0 auto;
 }
