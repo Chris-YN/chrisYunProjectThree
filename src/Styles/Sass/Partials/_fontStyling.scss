@@ -8,11 +8,19 @@ h2{
 }
 
 h1{
-  font-size: 60px;
+  font-size: 3em;
   color: $white;
+  text-align: right;
+  letter-spacing: 0.1em;
+
+}
+
+h2{
+  font-size: 2em;
 }
 
 p{
   font-family: 'B612', sans-serif;
+  font-size: 1em;
 }
 

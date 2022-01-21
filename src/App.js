@@ -103,12 +103,30 @@ function App() {
     <div className="wrapper">
 
       <header>
-        <h1>Weather and Air Quality</h1>
-        <p>Please enter Province and City name</p>
+        <div className="headerFlexParent">
+            <h1>Weather & Air Quality</h1>
+          <div className="searchFormFlexParent">
+            <p>Please enter Province and City name</p>
+            <SearchForms handleSubmit={ handleSubmit }/>
+          </div>
+        </div>
       </header>
-      <SearchForms handleSubmit={ handleSubmit }/>
-      <DisplayResults responseObject={responseObject} />
+
+
+
+      <main>
+        
+          <div className="displayResult">
+              <DisplayResults responseObject={responseObject} />
+          </div>
+        
+      </main>
       
+
+
+      <footer>
+
+      </footer>
       
       <p>{errorMessage}</p>
       

@@ -230,26 +230,70 @@ html {
   overflow: hidden;
 }
 
+html {
+  font-size: 125%;
+  line-height: 1.15;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
 h1,
 h2 {
   font-family: "Nova Round", cursive;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 3em;
   color: #FFFFFF;
+  text-align: right;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-size: 2em;
 }
 
 p {
   font-family: "B612", sans-serif;
+  font-size: 1em;
 }
 
 html {
-  background-color: aqua;
+  background-color: #FFFFFF;
 }
 
 .wrapper {
-  background-color: rgb(22, 37, 37);
-  width: 85vw;
+  max-width: 1280px;
+  background: linear-gradient(180deg, #75dbec 0%, var(--aqiColor) 100%);
+  width: 90vw;
   margin: 0 auto;
+}
+
+#test {
+  background-image: url(../../Assets/02d.png);
+}
+
+header {
+  width: 90%;
+}
+
+.headerFlexParent,
+.searchFormFlexParent {
+  display: flex;
+}
+
+.headerFlexParent {
+  width: 50%;
 }/*# sourceMappingURL=App.css.map */
