@@ -28,7 +28,7 @@ const DisplayResults = ({ responseObject }) => {
   // else if statments to set color depending on 
     // Air Quality index number returned from API call.
   if(aqi <= 50) {
-    aqiExplanationString = ",  Green - Air quality is Good";
+    aqiExplanationString = "  Green - Air quality is Good";
     colorChange("#a8e160");
   } else if(aqi <= 100) {
     aqiExplanationString = ",  Yellow - Air quality is Moderate";
@@ -52,20 +52,24 @@ const DisplayResults = ({ responseObject }) => {
   //=====  JSX  =====//
   return(
     <div className="SearchResult">
-      <h2>results here</h2>
+      
       {/* turnary expression to not display anything until search is ran */}
       {responseObject.aqi === undefined ?
         (
-          <p>Nothing to see here yet.</p>
+          <p></p>
         ) : (
-          <ul>
-            <li>Air Quality Index: {responseObject.aqi}   {aqiExplanationString}</li>
-            <li>Humidity: {responseObject.humidity}</li>
-            <li>Temperature: {responseObject.temperature}</li>
-            <li><WeatherConditionString weatherIconName={weatherIconName}/></li>
+          <div className="resultContainer">
+            <ul className="resultUl">
+              <li>Air Quality Index:</li>
+              <li>{responseObject.aqi}{aqiExplanationString}</li>
+              <li>Humidity: {responseObject.humidity}</li>
+              <li>Temperature: {responseObject.temperature}&deg;C</li>
+              <li><WeatherConditionString weatherIconName={weatherIconName}/></li>
+            </ul>
+
             {/* image will display according to weather icon code returned */}
             <img src={Images[weatherIconName]} alt={<WeatherConditionString weatherIconName={weatherIconName}/>} />
-          </ul>
+          </div>
         )
       }
     </div>

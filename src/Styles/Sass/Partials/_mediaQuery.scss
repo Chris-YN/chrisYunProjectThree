@@ -2,3 +2,51 @@
 
 
 // _mediaQuery.scss
+@media (max-width: 885px){
+  .headerFlexParent{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    & input{
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  h1{
+    text-align: center;
+    &::after{
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 655px){
+  header{
+    width: 90%;
+  }
+  .searchFormFlexParent{
+    align-content: center;
+  }
+  h1{
+    font-size: 2.3em;
+  }
+}
+@media (max-width: 450px){
+  h1{
+    font-size: 2em;
+  }
+}
+@media (max-width: 390px){
+  h1{
+    font-size: 1.5em;
+  }
+  .resultContainer{
+    & li,
+    p{
+      font-size: 1em;
+    }
+  }
+}
+
