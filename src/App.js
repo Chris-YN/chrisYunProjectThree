@@ -52,7 +52,6 @@ function App() {
             return response.json();
           })
           .then((jsonResult) => {
-            console.log(jsonResult);
             // if statement to handle error(user side) for 404 from
               // missspelled province / city name.
             if (jsonResult.status == "success"){
