@@ -1,0 +1,75 @@
+
+
+
+// headerStyling.scss
+header{
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 6%;
+  & p{
+    font-size: 1em;
+    color: white;
+  }
+}
+
+
+.headerFlexParent,
+.searchFormFlexParent{
+  display: flex;
+}
+
+.headerFlexParent{
+  padding: 10% 10% 0 10%;
+}
+
+h1{
+  width: 50%;
+  margin-right: 3%;
+  position: relative;
+  z-index: 1;
+
+  &::after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    right: -10.5%;
+    top: -8%;
+    border-left: solid 5px $white;
+    z-index: -1;
+
+  }
+}
+
+.searchFormFlexParent{
+  margin: 8% 0 1% 4%;
+  flex-direction: column;
+  justify-content: center;
+}
+#provinceSearch{
+  margin-top: 4%;
+}
+#citySearch{
+  margin: 1.5% 0 4% 0;  
+}
+
+header input{
+  border: 0;
+  border-radius: 4px;
+  color: $lineGrey;
+  width: 65%;
+  display: block;
+}
+
+header button{
+  border: 0 ;
+  border-radius: 3px;
+  color: $white;
+  background-color: $lineGrey;
+}
+
+header button:hover{
+  cursor: pointer;
+  color:$darkGrey;
+}
+
+

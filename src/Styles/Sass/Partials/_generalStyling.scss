@@ -1,0 +1,32 @@
+
+
+
+// _generalStyling.scss
+
+// .App{
+//   background-color: $startGrey;
+// }
+.preLoadWrapper,
+.wrapper{
+  max-width: 985px;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.preLoadWrapper{
+  background-color: $startGrey;
+}
+
+.wrapper{
+  background: linear-gradient(180deg, rgb(66, 198, 231) 6%,  var(--aqiColor) 100%);
+}
+
+footer{
+  background-color: $darkGrey;
+  & p{
+    color: $white;
+    font-size: 0.6em;
+    padding: 1% 0 1% 0;
+    text-align: center;
+  }
+}
