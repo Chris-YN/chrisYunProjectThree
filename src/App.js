@@ -16,7 +16,7 @@ import DisplayResults from "./Components/DisplayResults/DisplayResults.js";
 function App() {
   //=====  variables  =====/
   const baseUrl = "https://api.airvisual.com/v2/city";
-  const apiKey = "7d2a621e-555f-4192-9072-0289c034663c";
+  const apiKey = "f15e3417-8870-450f-8046-7c6c24bddc26";
 
 
 
